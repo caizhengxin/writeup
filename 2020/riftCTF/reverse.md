@@ -4,12 +4,6 @@
 
 > 题解
 
-1. radare2
-
-```
-r2 chall1.elf
-s main
-pdf
-```
+1. strings chall1.elf | grep riftCTF
 
 > riftCTF{tr4c1ng-mAkes-17-SUPeR-345Y}
