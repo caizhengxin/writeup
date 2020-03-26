@@ -67,3 +67,41 @@ print("".join([chr(int(v, 16)) for v in textwrap.wrap("424A447B79316E677A7569736
 2. outguess -k 'gemlove' -r sheng_huo_zhao_zhao.jpg out.txt
 
 > BJD{wdnmd_misc_1s_so_Fuck1ng_e@sy}
+
+## TARGZ-y1ng
+
+> 题解
+
+```python
+import os
+import glob
+import zipfile
+
+
+filters = []
+
+
+while 1:
+    for file in glob.glob("*.tar.gz"):
+        if file not in filters:
+            filename = os.path.basename(file).split(".")[0]
+            with zipfile.ZipFile(file) as zf:
+                zf.extractall(pwd=filename.encode())
+                zf.close()
+                filters.append(os.path.basename(file))
+                os.remove(file)
+
+    with open("flag", "rb") as f:
+        print(f.read())
+        break
+```
+
+> BJD{wow_you_can_rea11y_dance}
+
+## Imagin-开场曲
+
+> 题解
+
+1. 根据声音和每个字符串图形不同
+
+> BJD{MIKUTAP3313313}
