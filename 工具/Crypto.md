@@ -18,6 +18,8 @@
 ## 密码
 
 - [分解p和q](http://www.factordb.com/index.php)
+- [rsa-wiener-attack](https://github.com/pablocelayes/rsa-wiener-attack)
+- [Playfair](http://rumkin.com/tools/cipher/playfair.php)
 
 ## 多种加密网站
 

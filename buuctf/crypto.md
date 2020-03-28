@@ -480,3 +480,23 @@ print(m)
 ```
 
 > flag{13212je2ue28fy71w8u87y31r78eu1e2}
+
+## RSA2
+
+> 知识点：RSA wiener attack
+
+> 题解
+
+1. 通过这个脚本``https://github.com/pablocelayes/rsa-wiener-attack/blob/master/RSAwienerHacker.py``拿到d
+
+> flag{47bf28da384590448e0b0d23909a25a4}
+
+## Cipher
+
+> 知识点：Playfair加密/解密
+
+> 题解
+
+1. Key为Playfair, 解密地址http://rumkin.com/tools/cipher/playfair.php
+
+> flag{itisnotaproblemhavefun}
