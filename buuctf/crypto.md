@@ -439,3 +439,44 @@ print(md5_crack(s, "E903"))
 ```
 
 > flag{E9032994DABAC08080091151380478A2}
+
+## RSAROLL
+
+> 知识点：RSA加密/解密，分解p和q
+
+> 题解
+
+```python
+import gmpy2
+from Crypto.Util.number import long_to_bytes
+
+e = 19
+n = 920139713
+# 分解p和q：http://www.factordb.com/index.php?query=920139713
+p = 18443
+q = 49891
+
+# (d * e) mod ((p - 1) * (q - 1)) = 1
+# c = m ^ e mode n
+# m = c ^ d mode n
+
+d = int(gmpy2.invert(e, (p - 1) * (q - 1)))
+
+m = ""
+
+with open("data.txt", "rb") as f:
+    f.readline()
+    f.readline()
+
+    while 1:
+        ss = f.readline()
+
+        if not ss:
+            break
+        c = int(ss.decode().replace("\n", ""))
+        m += chr(gmpy2.powmod(c, d, n))
+
+print(m)
+```
+
+> flag{13212je2ue28fy71w8u87y31r78eu1e2}

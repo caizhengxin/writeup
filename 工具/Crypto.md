@@ -15,6 +15,10 @@
 
 - [cmd5](https://www.cmd5.com/)
 
+## 密码
+
+- [分解p和q](http://www.factordb.com/index.php)
+
 ## 多种加密网站
 
 - [编码和哈希](http://encode.chahuo.com/)
