@@ -399,3 +399,43 @@ print("flag{" + ss.upper() + "}")
 ```
 
 > flag{FFFFFED31F645055F9}
+
+## 还原大师
+
+> 知识点：MD5加密暴力破解
+
+> 题解
+
+```python
+# -*- coding: utf-8 -*-
+# @Author: JanKinCai
+# @Date:   2020-03-18 22:44:25
+# @Last Modified by:   JanKinCai
+# @Last Modified time: 2020-03-28 16:29:39
+import string
+import hashlib
+
+# ?表示大写字母
+s = "TASC{}O3RJMV{}WDJKX{}ZM"
+# E903???4DAB????08?????51?80??8A?
+# 知识点：MD5加密暴力破解
+
+
+def md5_crack(s: str, vaild: str) -> str:
+    """爆破MD5
+    """
+
+    for v1 in string.ascii_uppercase:
+        for v2 in string.ascii_uppercase:
+            for v3 in string.ascii_uppercase:
+                ss = s.format(v1, v2, v3)
+                ss = hashlib.md5(ss.encode("utf-8")).hexdigest().upper()
+                
+                if ss.startswith(vaild):
+                    return ss
+
+
+print(md5_crack(s, "E903"))
+```
+
+> flag{E9032994DABAC08080091151380478A2}
