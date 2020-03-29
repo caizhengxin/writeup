@@ -4,7 +4,7 @@
 
 > 题解
 
-1. 使用在线cmd5工具，字符串查找
+1. 使用在线[cmd5](https://www.cmd5.com/)工具，字符串查找
 
 > flag{admin1}
 
@@ -44,7 +44,7 @@
 
 > 题解
 
-1. 使用在线Quoted-printable解密
+1. 使用在线[Quoted-printable](http://www.mxcz.net/tools/QuotedPrintable.aspx)解密
 
 > flag{那你也很棒哦}
 
@@ -68,7 +68,16 @@
 
 > 题解
 
-1. 参考python-ctf rsa请d
+```python
+import gmpy2
+
+p = 473398607161
+q = 4511491
+e = 17
+
+d = int(gmpy2.invert(e, (p - 1) * (q - 1)))
+print(d)
+```
 
 > flag{125631357777427553}
 
@@ -500,3 +509,45 @@ print(m)
 1. Key为Playfair, 解密地址http://rumkin.com/tools/cipher/playfair.php
 
 > flag{itisnotaproblemhavefun}
+
+## Dangerous RSA
+
+> 知识点：[低指数攻击](https://xz.aliyun.com/t/2731#toc-6)
+
+> 题解
+
+```python
+import gmpy2
+
+c = # ...
+n = # ...
+e = 3
+
+k = 0
+
+while 1:
+    m, b = gmpy2.iroot(c + k * n, 3)
+    if b == 1:
+        print(bytes.fromhex(hex(m)[2:]))
+        break
+    k += 1
+```
+
+> flag{25df8caf006ee5db94d48144c33b2c3b}
+
+## 达芬奇密码
+
+> 知识点：移位
+
+> 题解
+
+```python
+# S1和S2长度相同，对S1排序并排序S2
+s1 = "1 233 3 2584 1346269 144 5 196418 21 1597 610 377 10946 89 514229 987 8 55 6765 2178309 121393 317811 46368 4181 1 832040 2 28657 75025 34 13 17711"
+s1 = s1.split(" ")
+s2 = "36968853882116725547342176952286"
+
+print("flag{" + "".join([v for _, v in sorted(zip(s1, s2), key=lambda v: int(v[0]))]) + "}")
+```
+
+> flag{37995588256861228614165223347687}
