@@ -17,7 +17,8 @@
 
 ## 密码
 
-- [分解p和q](http://www.factordb.com/index.php)
+- [在线分解n](http://www.factordb.com/index.php)
+- [Yafu分解n]
 - [rsa-wiener-attack](https://github.com/pablocelayes/rsa-wiener-attack)
 - [Playfair](http://rumkin.com/tools/cipher/playfair.php)
 
