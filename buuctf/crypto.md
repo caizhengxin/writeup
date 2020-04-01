@@ -899,3 +899,26 @@ print(ss)
 ```
 
 > flag{f238yu28323uf28u2yef2ud8uf289euf}
+
+## [AFCTF2018]你能看出这是什么加密么
+
+> 知识点：RSA解密
+
+> 题解
+
+```python
+import gmpy2
+from Crypto.Util.number import long_to_bytes
+
+p=0x928fb6aa9d813b6c3270131818a7c54edb18e3806942b88670106c1821e0326364194a8c49392849432b37632f0abe3f3c52e909b939c91c50e41a7b8cd00c67d6743b4f
+q=0xec301417ccdffa679a8dcc4027dd0d75baf9d441625ed8930472165717f4732884c33f25d4ee6a6c9ae6c44aedad039b0b72cf42cab7f80d32b74061
+e=0x10001
+c=0x70c9133e1647e95c3cb99bd998a9028b5bf492929725a9e8e6d2e277fa0f37205580b196e5f121a2e83bc80a8204c99f5036a07c8cf6f96c420369b4161d2654a7eccbdaf583204b645e137b3bd15c5ce865298416fd5831cba0d947113ed5be5426b708b89451934d11f9aed9085b48b729449e461ff0863552149b965e22b6
+
+d = gmpy2.invert(e, (p - 1) * (q - 1))
+m = gmpy2.powmod(c, d, p * q)
+m = long_to_bytes(m)
+print(m)
+```
+
+> flag{R54_|5_$0_$imp13}
