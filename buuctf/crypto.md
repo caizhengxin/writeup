@@ -827,3 +827,75 @@ print(res)
 2. 打开浏览器F12, Console运行
 
 > flag{a0448fd730b62c13ca80200c4529daa2}
+
+## yxx
+
+> 知识点：异或
+
+> 题解
+
+```python
+s = ""
+
+with open("密文.txt", "rb") as f:
+    with open("明文.txt", "rb") as f1:
+        s1 = f.read()
+        s2 = f1.read()
+
+        for i in range(len(s1)):
+            s += chr(s1[i] ^ s2[i])
+
+print(s)
+# flag:nctf{xor_xor_xor_biubiubiu}
+```
+
+> flag{xor_xor_xor_biubiubiu}
+
+## 鸡藕椒盐味
+
+> 知识点：奇偶检验，纠错
+
+```python
+import hashlib
+# 海明校验码纠错
+print(hashlib.md5(b"110110100000").hexdigest())
+```
+
+> flag{d14084c7ceca6359eaac6df3c234dd3b}
+
+## EasyProgram
+
+> 知识点：代码阅读，编程
+
+> 题解
+
+```python
+with open("file.txt", "rb") as f:
+    ms = f.read()
+
+key = "whoami"
+s = list(range(256))
+t = [key[i % len(key)] for i in range(256)]
+
+j = 0
+
+for i in range(256):
+    j = (j + s[i] + ord(t[i])) % 256
+    s[i], s[j] = s[j], s[i]
+
+ss = ""
+j = 0
+i = 0
+
+for m in range(38):
+    i = (i + 1) % 256
+    j = (j + s[i]) % 256
+    s[i], s[j] = s[j], s[i]
+    # 原题这行代码错误 set x:(s[i] + (s[j]mod(256))mod(256)) 应该改成 set x:(s[i] + (s[j]mod(256)))mod(256)
+    x = (s[i] + (s[j] % 256)) % 256
+    ss += chr(ms[m] ^ s[x])
+
+print(ss)
+```
+
+> flag{f238yu28323uf28u2yef2ud8uf289euf}

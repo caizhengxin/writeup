@@ -2,6 +2,8 @@
 
 新人玩CTF--笔记
 
+``注：所有解题代码都是Python3运行``
+
 ## 练习平台
 
 - [BUUCTF](https://buuoj.cn/challenges)
