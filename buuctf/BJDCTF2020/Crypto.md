@@ -218,7 +218,7 @@ e = 65537
 # (p + q)^2 = p^2 + q^2 + 2pq
 pq1 = int(gmpy2.iroot(z + 2 * n, 2)[0])
 
-# (p - 1) * (q - 1) = pq - (p + q) + 1 
+# (p - 1) * (q - 1) = pq - (p + q) + 1
 d = gmpy2.invert(e, n - pq1 + 1)
 
 m = gmpy2.powmod(c, d, n)
@@ -260,3 +260,32 @@ print(m)
 ```
 
 > flag{r3a_C0mmoN_moD@_4ttack}
+
+## 编码与调制
+
+> 知识点：曼切斯特编码
+
+> 题解
+
+```python
+# -*- coding: utf-8 -*-
+# @Author: JanKinCai
+# @Date:   2020-04-02 12:33:23
+# @Last Modified by:   JanKinCai
+# @Last Modified time: 2020-04-02 12:43:03
+import textwrap
+
+
+c = "2559659965656A9A65656996696965A6695669A9695A699569666A5A6A6569666A59695A69AA696569666AA6"
+c = bytes.fromhex(c)
+# 转换二进制
+m = "".join([bin(v)[2:].zfill(8) for v in c])
+# 10 --> 1, 01 --> 0
+m = "".join([("1" if v == "10" else "0") for v in textwrap.wrap(m, 2)])
+# 二进制转ASCII
+m = "".join([chr(int(v, 2)) for v in textwrap.wrap(m, 8)])
+print(m)
+# BJD{DifManchestercode}
+```
+
+> flag{DifManchestercode}
