@@ -132,3 +132,23 @@ print("".join([chr(60 + v) for v in [11, 51, 51, 40, 46, 51, 38]]))
 ```
 
 > flag{Goodjob}
+
+## vigenere
+
+> 知识点：维吉尼亚密码
+
+> 题解
+
+1. https://www.guballa.de/vigenere-solver, 输入密钥长度
+2. 最后行flag，``flag is mrctf vigenere crypto crack man, please add underscore and curly braces.``
+
+> flag{vigenere_crypto_crack_man}
+
+## Easy_RSA
+
+> 题解
+
+```python
+```
+
+> flag{Ju3t_@_31mp13_que3t10n}
