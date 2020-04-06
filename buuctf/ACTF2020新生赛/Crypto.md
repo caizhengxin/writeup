@@ -78,3 +78,30 @@ print(m)
 ```
 
 > flag{p_and_q_should_not_be_so_close_in_value}
+
+## crypto-aes
+
+> 知识点：XOR、AES解密
+
+```python
+from Crypto.Cipher import AES
+from Crypto.Util.number import long_to_bytes, bytes_to_long
+
+
+s = 91144196586662942563895769614300232343026691029427747065707381728622849079757
+s = long_to_bytes(s)
+c = b'\x8c-\xcd\xde\xa7\xe9\x7f.b\x8aKs\xf1\xba\xc75\xc4d\x13\x07\xac\xa4&\xd6\x91\xfe\xf3\x14\x10|\xf8p'
+
+# 由于key的字节为2*16, iv为16，所以左边16个字节乘以2，得到key
+key = s[:16] * 2
+# XOR
+iv = bytes_to_long(s[16:]) ^ bytes_to_long(key[16:])
+iv = long_to_bytes(iv)
+
+aes = AES.new(key, AES.MODE_CBC, iv)
+flag = aes.decrypt(c)
+print(flag)
+# actf{W0W_y0u_can_so1v3_AES_now!}
+```
+
+> flag{W0W_y0u_can_so1v3_AES_now!}

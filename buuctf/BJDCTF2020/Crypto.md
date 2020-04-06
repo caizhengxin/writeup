@@ -289,3 +289,52 @@ print(m)
 ```
 
 > flag{DifManchestercode}
+
+## Polybius
+
+> 知识点：Polybius密码
+
+> 题解
+
+```python
+import string
+import textwrap
+import itertools
+
+
+def decrypt(s: str, rm: str = "J", cstrs: str = "12345") -> bytes:
+    """Polybius decrypt
+    """
+
+    upper = string.ascii_uppercase.replace(rm.upper(), "")
+    vlist = [upper[cstrs.find(v1) * 5 + cstrs.find(v2)] for v1, v2 in textwrap.wrap(s, 2)]
+
+    return "".join(vlist).encode("utf-8")
+
+
+def crack(s: str, rm: str = "JVWQZ", valid: str = "flag") -> bytes:
+    """Crack polybius decrypt
+    """
+
+    cstrs = list(set(list(s)))
+    valid = valid.encode("utf-8").upper()
+
+    if len(cstrs) != 5:
+        raise ValueError("Not polybius.")
+
+    vlist = []
+
+    for v in itertools.permutations(cstrs, 5):
+        for rms in rm:
+            vv = decrypt(s, rm=rms, cstrs="".join(v))
+            if valid in vv:
+                vlist.append(vv)
+
+    return b", ".join(vlist).lower()
+
+
+print(crack("ouauuuoooeeaaiaeauieuooeeiea"))
+# b'flagkxoplubkyx, flagispolybius'
+```
+
+> flag{flagispolybius}

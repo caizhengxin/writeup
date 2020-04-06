@@ -922,3 +922,11 @@ print(m)
 ```
 
 > flag{R54_|5_$0_$imp13}
+
+## [AFCTF2018]Vigenère
+
+> 知识点：维吉密码爆破
+
+密钥：csuwangjiang
+
+> flag{Whooooooo_U_Gotcha!}
