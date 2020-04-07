@@ -930,3 +930,63 @@ print(m)
 密钥：csuwangjiang
 
 > flag{Whooooooo_U_Gotcha!}
+
+## [AFCTF2018]BASE
+
+> 知识点：Base64/32/16
+
+> 题解
+
+```python
+import base64
+
+
+with open("flag_encode.txt",'rb') as f:
+    ss = f.read()
+
+while 1:
+    try:
+        ss = base64.b32decode(ss).decode()
+    except Exception:
+        try:
+            ss = base64.b64decode(ss).decode()
+        except Exception:
+            try:
+                ss = base64.b16decode(ss).decode()
+            except Exception:
+                print(ss)
+                break
+
+# afctf{U_5h0u1d_Us3_T00l5}
+```
+
+> flag{U_5h0u1d_Us3_T00l5}
+
+## [AFCTF2018]Single
+
+> 知识点：词频
+
+> 题解
+
+1. https://quipqiup.com/
+
+> flag{Oh_U_found_it_nice_tRy}
+
+## MagicNum
+
+> 知识点：浮点数转ASCII码
+
+```python
+import struct
+
+
+with open("where_is_flag.txt", "rb") as f:
+    ss = f.read().decode().split("\r\n")
+
+
+dd = b"".join([struct.pack("f", float(v)) for v in ss if v])
+print(dd)
+# afctf{sec_is_everywhere}
+```
+
+> flag{sec_is_everywhere}
