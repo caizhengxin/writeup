@@ -1065,44 +1065,6 @@ GRID 4(BOTTOM RIGHT): ABCDEFGHIJKLMNOPRSTUVWXYZ
 
 > flag{youngandsuccessful}
 
-## [WUSTCTF2020]dp_leaking_1s_very_d@angerou
-
-```python
-import gmpy2
-from Crypto.Util.number import long_to_bytes, bytes_to_long
-
-
-def rsa_n_e_c_dp(n: int, dp: int, e: int, c: int) -> bytes:
-    """Known n dp e c, decrypto
-
-    dp = d % (p - 1)
-
-    c = m ^ e mode n
-    m = c ^ d mode n
-
-    """
-
-    d = 0
-
-    for i in range(1, e):
-        v = dp * e - 1
-
-        if v % i != 0:
-            continue
-        
-        p = v // i + 1
-
-        if n % p == 0:
-            q = n // p
-            d = gmpy2.invert(e, (p - 1) * (q - 1))
-
-    return long_to_bytes(gmpy2.powmod(c, d, n))
-
-print(rsa_n_e_c_dp(e=e, n=n, c=c, dp=dp))
-```
-
-> flag{dp_leaking_1s_very_d@angerous}
-
 ## RSA & what
 
 > 知识点：共模攻击、base64隐写
